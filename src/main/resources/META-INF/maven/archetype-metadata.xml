@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="sample-master"
+    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <fileSets>
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>src/test/java</directory>
+      <includes>
+        <include>**/*.java</include>
+      </includes>
+      <excludes>
+        <exclude>Console.java</exclude>
+      </excludes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/test/java</directory>
+      <includes>
+        <include>Console.java</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/test/resources</directory>
+      <includes>
+        <include>**/*.txt</include>
+        <include>**/*.xml</include>
+        <include>**/*.html</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>src/test/resources</directory>
+      <includes>
+        <include>**/*.</include>
+        <include>**/*.css</include>
+        <include>**/*.npmignore</include>
+        <include>**/*.gif</include>
+        <include>**/*.scss</include>
+        <include>**/*.js</include>
+        <include>**/*.py</include>
+        <include>**/*.eot</include>
+        <include>**/*.jscsrc</include>
+        <include>**/*.ps1</include>
+        <include>**/*.feature</include>
+        <include>**/*.tab</include>
+        <include>**/*.ico</include>
+        <include>**/*.sh</include>
+        <include>**/*.md</include>
+        <include>**/*.json</include>
+        <include>**/*.yml</include>
+        <include>**/*.nuspec</include>
+        <include>**/*.editorconfig</include>
+        <include>**/*.woff2</include>
+        <include>**/*.map</include>
+        <include>**/*.jshintrc</include>
+        <include>**/*.ftl</include>
+        <include>**/*.info</include>
+        <include>**/*.jpg</include>
+        <include>**/*.otf</include>
+        <include>**/*.htm</include>
+        <include>**/*.svg</include>
+        <include>**/*.csslintrc</include>
+        <include>**/*.ttf</include>
+        <include>**/*.png</include>
+        <include>**/*.eslintrc</include>
+        <include>**/*.less</include>
+        <include>**/*.woff</include>
+        <include>**/*.easy-pie-chart/LICENSE</include>
+        <include>**/*.coffee</include>
+        <include>**/*.php</include>
+        <include>**/*.StepListener</include>
+        <include>**/*.eslintignore</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>lib</directory>
+      <includes>
+        <include>**/*.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>projeto.properties</include>
+        <include>thucydides.properties</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>.gitignore</include>
+        <include>README.md</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+</archetype-descriptor>

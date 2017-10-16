@@ -1,0 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+/* jquery.sparkline @VERSION@ - http://omnipotent.net/jquery.sparkline/ 
+** Licensed under the New BSD License - see above site for details */
+

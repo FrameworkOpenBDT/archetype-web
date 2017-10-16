@@ -1,0 +1,177 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<!doctype html>
+<html>
+
+<head>
+    <title>Pie Chart with Custom Tooltips</title>
+    <script src="../dist/Chart.bundle.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <style>
+    ${symbol_pound}canvas-holder {
+        width: 100%;
+        margin-top: 50px;
+        text-align: center;
+    }
+    ${symbol_pound}chartjs-tooltip {
+        opacity: 1;
+        position: absolute;
+        background: rgba(0, 0, 0, .7);
+        color: white;
+        padding: 3px;
+        border-radius: 3px;
+        -webkit-transition: all .1s ease;
+        transition: all .1s ease;
+        pointer-events: none;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    ${symbol_pound}chartjs-tooltip.below {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    ${symbol_pound}chartjs-tooltip.below:before {
+        border: solid;
+        border-color: ${symbol_pound}111 transparent;
+        border-color: rgba(0, 0, 0, .8) transparent;
+        border-width: 0 8px 8px 8px;
+        bottom: 1em;
+        content: "";
+        display: block;
+        left: 50%;
+        position: absolute;
+        z-index: 99;
+        -webkit-transform: translate(-50%, -100%);
+        transform: translate(-50%, -100%);
+    }
+    ${symbol_pound}chartjs-tooltip.above {
+        -webkit-transform: translate(-50%, -100%);
+        transform: translate(-50%, -100%);
+    }
+    ${symbol_pound}chartjs-tooltip.above:before {
+        border: solid;
+        border-color: ${symbol_pound}111 transparent;
+        border-color: rgba(0, 0, 0, .8) transparent;
+        border-width: 8px 8px 0 8px;
+        bottom: 1em;
+        content: "";
+        display: block;
+        left: 50%;
+        top: 100%;
+        position: absolute;
+        z-index: 99;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="canvas-holder">
+        <canvas id="chart-area1" width="50" height="50" />
+    </div>
+    <div id="canvas-holder">
+        <canvas id="chart-area2" width="300" height="300" />
+    </div>
+
+    <div id="chartjs-tooltip"></div>
+
+
+    <script>
+    Chart.defaults.global.customTooltips = function(tooltip) {
+
+    	// Tooltip Element
+        var tooltipEl = ${symbol_dollar}('${symbol_pound}chartjs-tooltip');
+
+        // Hide if no tooltip
+        if (!tooltip) {
+            tooltipEl.css({
+                opacity: 0
+            });
+            return;
+        }
+
+        // Set caret Position
+        tooltipEl.removeClass('above below');
+        tooltipEl.addClass(tooltip.yAlign);
+
+        // Set Text
+        tooltipEl.html(tooltip.text);
+
+        // Find Y Location on page
+        var top;
+        if (tooltip.yAlign == 'above') {
+            top = tooltip.y - tooltip.caretHeight - tooltip.caretPadding;
+        } else {
+            top = tooltip.y + tooltip.caretHeight + tooltip.caretPadding;
+        }
+
+        //Function to find absolution position of the element and not just it's relative position
+        function getPosition (element) {
+            var top = 0, left = 0;
+            do {
+                top += element.offsetTop || 0;
+                left += element.offsetLeft || 0;
+                element = element.offsetParent;
+            } while (element);
+
+            return {
+                top: top,
+                left: left
+            };
+        };
+
+        //Finding absolute position of the chart canvas
+        var position = getPosition(tooltip.chart.canvas)
+        
+        // Display, position, and set styles for font
+        tooltipEl.css({
+            opacity: 1,
+            left: position.left + tooltip.x + 'px',
+            top: position.top + top + 'px',
+            fontFamily: tooltip.fontFamily,
+            fontSize: tooltip.fontSize,
+            fontStyle: tooltip.fontStyle,
+        });
+    };
+
+    var pieData = [{
+        value: 300,
+        color: "${symbol_pound}F7464A",
+        highlight: "${symbol_pound}FF5A5E",
+        label: "Red"
+    }, {
+        value: 50,
+        color: "${symbol_pound}46BFBD",
+        highlight: "${symbol_pound}5AD3D1",
+        label: "Green"
+    }, {
+        value: 100,
+        color: "${symbol_pound}FDB45C",
+        highlight: "${symbol_pound}FFC870",
+        label: "Yellow"
+    }, {
+        value: 40,
+        color: "${symbol_pound}949FB1",
+        highlight: "${symbol_pound}A8B3C5",
+        label: "Grey"
+    }, {
+        value: 120,
+        color: "${symbol_pound}4D5360",
+        highlight: "${symbol_pound}616774",
+        label: "Dark Grey"
+    }];
+
+    window.onload = function() {
+        var ctx1 = document.getElementById("chart-area1").getContext("2d");
+        window.myPie = new Chart(ctx1).Pie(pieData);
+
+        var ctx2 = document.getElementById("chart-area2").getContext("2d");
+        window.myPie = new Chart(ctx2).Pie(pieData);
+    };
+    </script>
+</body>
+
+</html>

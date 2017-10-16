@@ -1,0 +1,38 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="${version}" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML ${version} Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>JQVMap - World Map</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <link href="../dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../dist/jquery.vmap.js"></script>
+    <script type="text/javascript" src="../dist/maps/jquery.vmap.world.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery.vmap.sampledata.js"></script>
+
+    <script>
+      jQuery(document).ready(function () {
+        jQuery('${symbol_pound}vmap').vectorMap({
+          map: 'world_en',
+          backgroundColor: '${symbol_pound}333333',
+          color: '${symbol_pound}ffffff',
+          hoverOpacity: 0.7,
+          selectedColor: '${symbol_pound}666666',
+          enableZoom: true,
+          showTooltip: true,
+          scaleColors: ['${symbol_pound}C8EEFF', '${symbol_pound}006491'],
+          values: sample_data,
+          normalizeFunction: 'polynomial'
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="vmap" style="width: 600px; height: 400px;"></div>
+  </body>
+</html>
