@@ -73,7 +73,13 @@
     <fileSet encoding="UTF-8">
       <directory>lib</directory>
       <includes>
-        <include>**/*.jar</include>
+        <include>openbdt/*</include>
+        <include>openbdt-adapter-selenium/*</include>
+        <include>openbdt-core/*</include>
+        <include>openbdt-plugin-maven/*</include>
+        <include>openbdt-report/*</include>
+        <include>chromedriver.exe</include>
+        <include>serenity-report-resources-1.3.0.jar</include>
       </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">

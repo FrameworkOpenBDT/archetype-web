@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>${groupId}</groupId>
@@ -30,7 +31,7 @@
 		<version>1.5.1.RELEASE</version>
 	</parent>
 
-	<dependencies>
+<dependencies>
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
 			<artifactId>serenity-core</artifactId>
@@ -103,16 +104,21 @@
 			<groupId>io.openbdt</groupId>
 			<artifactId>openbdt.core</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/openbdt.core.jar</systemPath>
+			<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.core.jar</systemPath> -->
 		</dependency>
 
 		<dependency>
 			<groupId>io.openbdt</groupId>
 			<artifactId>openbdt.adapter.selenium</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/openbdt.adapter.selenium.jar</systemPath>
+			<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.adapter.selenium.jar</systemPath> -->
+		</dependency>
+
+		<dependency>
+			<groupId>io.openbdt</groupId>
+			<artifactId>openbdt.plugin.maven</artifactId>
+			<version>1.0</version>
+			<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.plugin.maven-1.0.jar</systemPath> -->
 		</dependency>
 
 		<dependency>
@@ -158,15 +164,13 @@
 						<groupId>io.openbdt</groupId>
 						<artifactId>openbdt.core</artifactId>
 						<version>1.0</version>
-						<scope>system</scope>
-						<systemPath>${basedir}/lib/openbdt.core.jar</systemPath>
+						<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.core.jar</systemPath> -->
 					</dependency>
 				</dependencies>
 
 				<configuration>
-
 					<includes>
-						<include>**/${groupId}/runner/*.java</include>
+						<include>${packageInPathFormat}/runner/*.java</include>
 					</includes>
 
 					<parallel>methods</parallel>
@@ -239,6 +243,100 @@
 						<phase>post-integration-test</phase>
 						<goals>
 							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- INTALL DEPENDENCIES IN LOCAL MAVEN REPOSITORY (CLEAN PHASE)-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+				<executions>
+				<!-- OPENBDT -->
+					<execution>
+						<id>install-openbdt</id>
+						<phase>clean</phase>
+						<configuration>
+							<file>${basedir}/lib/openbdt/_remote.repositories</file>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>io.openbdt</groupId>
+							<artifactId>openbdt</artifactId>
+							<version>1.0</version>
+							<packaging>jar</packaging>
+							<pomFile>${basedir}/lib/openbdt/pom.xml</pomFile>
+						</configuration>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+					</execution>
+					<!-- CORE -->
+					<execution>
+						<id>install-core</id>
+						<phase>clean</phase>
+						<configuration>
+							<file>${basedir}/lib/openbdt-core/openbdt.core.jar</file>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>io.openbdt</groupId>
+							<artifactId>openbdt.core</artifactId>
+							<version>1.0</version>
+							<packaging>jar</packaging>
+							<pomFile>${basedir}/lib/openbdt-core/pom.xml</pomFile>
+						</configuration>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+					</execution>
+					<!-- REPORT -->
+					<execution>
+						<id>install-report</id>
+						<phase>clean</phase>
+						<configuration>
+							<file>${basedir}/lib/openbdt-report/openbdt.report-1.0.jar</file>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>io.openbdt</groupId>
+							<artifactId>openbdt.report</artifactId>
+							<version>1.0</version>
+							<packaging>jar</packaging>
+							<pomFile>${basedir}/lib/openbdt-report/pom.xml</pomFile>
+						</configuration>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+					</execution>
+					<!-- ADAPTER.SELENIUM -->
+					<execution>
+						<id>install-adapter-selenium</id>
+						<phase>clean</phase>
+						<configuration>
+							<file>${basedir}/lib/openbdt-adapter-selenium/openbdt.adapter.selenium.jar</file>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>io.openbdt</groupId>
+							<artifactId>openbdt.adapter.selenium</artifactId>
+							<version>1.0</version>
+							<packaging>jar</packaging>
+							<pomFile>${basedir}/lib/openbdt-adapter-selenium/pom.xml</pomFile>
+						</configuration>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+					</execution>
+					<!-- OPENBDT.PLUGIN.MAVEN -->
+					<execution>
+						<id>install-plugin-maven</id>
+						<phase>clean</phase>
+						<configuration>
+							<file>${basedir}/lib/openbdt-plugin-maven/openbdt.plugin.maven-1.0.jar</file>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>io.openbdt</groupId>
+							<artifactId>openbdt.plugin.maven</artifactId>
+							<version>1.0</version>
+							<packaging>jar</packaging>
+							<pomFile>${basedir}/lib/openbdt-plugin-maven/pom.xml</pomFile>
+						</configuration>
+						<goals>
+							<goal>install-file</goal>
 						</goals>
 					</execution>
 				</executions>
