@@ -29,28 +29,20 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.1.RELEASE</version>
+		<relativePath />
 	</parent>
 
-<dependencies>
+	<dependencies>
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
 			<artifactId>serenity-core</artifactId>
 			<version>${serenity.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.serenity-bdd</groupId>
-					<artifactId>serenity-report-resources</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
 			<artifactId>serenity-report-resources</artifactId>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/serenity-report-resources-1.3.0.jar</systemPath>
 			<version>${serenity.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
 			<artifactId>serenity-cucumber</artifactId>
@@ -104,21 +96,18 @@
 			<groupId>io.openbdt</groupId>
 			<artifactId>openbdt.core</artifactId>
 			<version>1.0</version>
-			<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.core.jar</systemPath> -->
 		</dependency>
 
 		<dependency>
 			<groupId>io.openbdt</groupId>
 			<artifactId>openbdt.adapter.selenium</artifactId>
 			<version>1.0</version>
-			<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.adapter.selenium.jar</systemPath> -->
 		</dependency>
 
 		<dependency>
 			<groupId>io.openbdt</groupId>
 			<artifactId>openbdt.plugin.maven</artifactId>
 			<version>1.0</version>
-			<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.plugin.maven-1.0.jar</systemPath> -->
 		</dependency>
 
 		<dependency>
@@ -164,7 +153,6 @@
 						<groupId>io.openbdt</groupId>
 						<artifactId>openbdt.core</artifactId>
 						<version>1.0</version>
-						<!-- <scope>system</scope> <systemPath>${basedir}/lib/openbdt.core.jar</systemPath> -->
 					</dependency>
 				</dependencies>
 
@@ -204,18 +192,10 @@
 						<groupId>net.serenity-bdd</groupId>
 						<artifactId>serenity-core</artifactId>
 						<version>${serenity.version}</version>
-						<exclusions>
-							<exclusion>
-								<groupId>net.serenity-bdd</groupId>
-								<artifactId>serenity-report-resources</artifactId>
-							</exclusion>
-						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>net.serenity-bdd</groupId>
 						<artifactId>serenity-report-resources</artifactId>
-						<scope>system</scope>
-						<systemPath>${basedir}/lib/serenity-report-resources-1.3.0.jar</systemPath>
 						<version>${serenity.version}</version>
 					</dependency>
 				</dependencies>
@@ -247,101 +227,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			
-			<!-- INTALL DEPENDENCIES IN LOCAL MAVEN REPOSITORY (CLEAN PHASE)-->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>2.5.2</version>
-				<executions>
-				<!-- OPENBDT -->
-					<execution>
-						<id>install-openbdt</id>
-						<phase>clean</phase>
-						<configuration>
-							<file>${basedir}/lib/openbdt/_remote.repositories</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>io.openbdt</groupId>
-							<artifactId>openbdt</artifactId>
-							<version>1.0</version>
-							<packaging>jar</packaging>
-							<pomFile>${basedir}/lib/openbdt/pom.xml</pomFile>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-					<!-- CORE -->
-					<execution>
-						<id>install-core</id>
-						<phase>clean</phase>
-						<configuration>
-							<file>${basedir}/lib/openbdt-core/openbdt.core.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>io.openbdt</groupId>
-							<artifactId>openbdt.core</artifactId>
-							<version>1.0</version>
-							<packaging>jar</packaging>
-							<pomFile>${basedir}/lib/openbdt-core/pom.xml</pomFile>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-					<!-- REPORT -->
-					<execution>
-						<id>install-report</id>
-						<phase>clean</phase>
-						<configuration>
-							<file>${basedir}/lib/openbdt-report/openbdt.report-1.0.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>io.openbdt</groupId>
-							<artifactId>openbdt.report</artifactId>
-							<version>1.0</version>
-							<packaging>jar</packaging>
-							<pomFile>${basedir}/lib/openbdt-report/pom.xml</pomFile>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-					<!-- ADAPTER.SELENIUM -->
-					<execution>
-						<id>install-adapter-selenium</id>
-						<phase>clean</phase>
-						<configuration>
-							<file>${basedir}/lib/openbdt-adapter-selenium/openbdt.adapter.selenium.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>io.openbdt</groupId>
-							<artifactId>openbdt.adapter.selenium</artifactId>
-							<version>1.0</version>
-							<packaging>jar</packaging>
-							<pomFile>${basedir}/lib/openbdt-adapter-selenium/pom.xml</pomFile>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-					<!-- OPENBDT.PLUGIN.MAVEN -->
-					<execution>
-						<id>install-plugin-maven</id>
-						<phase>clean</phase>
-						<configuration>
-							<file>${basedir}/lib/openbdt-plugin-maven/openbdt.plugin.maven-1.0.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>io.openbdt</groupId>
-							<artifactId>openbdt.plugin.maven</artifactId>
-							<version>1.0</version>
-							<packaging>jar</packaging>
-							<pomFile>${basedir}/lib/openbdt-plugin-maven/pom.xml</pomFile>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
-
 </project>
