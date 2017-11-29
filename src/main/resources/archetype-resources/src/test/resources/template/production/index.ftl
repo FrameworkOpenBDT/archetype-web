@@ -63,7 +63,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Ultima Execucao</a></li>
+                      <li><a href="index.html">&Uacute;ltima Execu&ccedil;&atilde;o</a></li>
                     </ul>
                   </li>
                     <ul class="nav child_menu">
@@ -118,7 +118,7 @@
               <div class="dashboard_graph">
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Estatísticas da execu&ccedil;&atilde;o</h3>
+                    <h3>Estat&iacute;ticas da execu&ccedil;&atilde;o</h3>
                   </div>
                 </div>
                 <div id="container_chart" class="col-md-9 col-sm-9 col-xs-12">
@@ -250,7 +250,7 @@
          data: {
              labels: ['Pendente', 'Erro', 'Sucesso', 'Ignorado'],
              datasets: [{
-                 label: 'Ultimas ' + ((typeof(details.steppedLine) === 'boolean') ? details.steppedLine : ``),
+                 label: '\xDAltimas ' + ((typeof(details.steppedLine) === 'boolean') ? details.steppedLine : ``),
                  steppedLine: details.steppedLine,
                  data: data,
                  borderColor: details.color,
@@ -282,7 +282,7 @@
 
      var steppedLineSettings = [{
          steppedLine: 'Executadas',
-         label: 'Última Execução',
+         label: '\xDAltima Execu\xE7\xE3o',
          color: window.chartColors.green
      }];
 
