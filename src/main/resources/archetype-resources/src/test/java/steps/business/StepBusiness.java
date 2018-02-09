@@ -12,19 +12,18 @@ import org.springframework.test.context.ContextConfiguration;
 import io.openbdt.element.WebBrowserScreenElement;
 import ${package}.pages.PageObjectClass;
 import jxl.common.Logger;
-import net.serenity_bdd.core.annotations.findby.By;
-import net.thucydides.core.annotations.Step;
+import net.serenitybdd.core.annotations.findby.By;
 
-@ContextConfiguration("/appcontext.xml")
+@ContextConfiguration("/spring-test.xml")
 public class StepBusiness {
 
 	PageObjectClass page;
-	private static Logger LOG = Logger.getLogger(StepBusiness.class);
+	
+	Logger LOG = Logger.getLogger(StepBusiness.class);
 	
 	@Autowired
-	private WebBrowserScreenElement viewElement; // OBJETO QUE CONTÉM MÉTODOS PRÓPRIOS DO FRAMEWORK
+	private WebBrowserScreenElement viewElement; // OBJETO QUE CONTÃ‰M MÃ‰TODOS PRÃ“PRIOS DO FRAMEWORK
 
-	@Step
 	public void openHome(String url) {
 		viewElement.open(url);
 		viewElement.getDriver().manage().window().maximize();
@@ -166,7 +165,6 @@ public class StepBusiness {
 		
 	}
 
-	@Step
 	public void validarTelaMyAccount(String arg1) {
 		viewElement.waitForElementIsPresent(20, page.getTituloMyAccount());
 		LOG.info(">> " + page.getTituloMyAccount().getText());
