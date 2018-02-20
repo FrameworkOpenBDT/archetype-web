@@ -11,5 +11,5 @@ It will install openbdt relative dependencies in Maven local Repository. After t
 ##### - Running the sample test:
 - Inside project folder, insert the command:
 ```sh
-    mvn verify io.openbdt:openbdt.plugin.maven:format-report
+    mvn verify
 ```

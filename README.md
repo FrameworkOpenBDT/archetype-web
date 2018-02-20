@@ -20,6 +20,6 @@ Inside the project folder that you already created, the file **thucydides.proper
 After setting the properties above, you can run the test already defined in the project. Inside the project folder type the command
 
 ```sh
-    mvn verify io.openbdt:openbdt.plugin.maven:format-report
+    mvn verify
 ```
 end the test should be started.
