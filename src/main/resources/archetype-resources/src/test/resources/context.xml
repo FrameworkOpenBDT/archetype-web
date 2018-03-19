@@ -7,11 +7,6 @@
 	xsi:schemaLocation= "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" >
 
-	<context:component-scan base-package="io.openbdt.element*" />
-
-	<bean class="io.openbdt.driver.IEDriver" id="driver"/>
-	<bean class="${groupId}.pages.PageObjectClass" id="pageObject" depends-on="driver"/>
-	<bean class="io.openbdt.element.WebBrowserScreenElement" 	id="viewELement"/>
- 	<bean class="${groupId}.steps.business.StepBusiness" id="stepBusiness">
-	</bean>
+	<context:component-scan base-package="${package}* io.openbdt*" />
+	
 </beans>
