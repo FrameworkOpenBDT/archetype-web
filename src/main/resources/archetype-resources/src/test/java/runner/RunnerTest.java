@@ -15,7 +15,7 @@ import io.openbdt.run.SuiteTestRunner;
 import io.openbdt.setup.Setup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/setup-spring.xml")
+@ContextConfiguration("/context.xml")
 public class RunnerTest {
 
 	@Autowired

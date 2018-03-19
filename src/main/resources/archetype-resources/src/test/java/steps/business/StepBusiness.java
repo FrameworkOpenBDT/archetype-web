@@ -14,7 +14,7 @@ import ${package}.pages.PageObjectClass;
 import jxl.common.Logger;
 import net.serenitybdd.core.annotations.findby.By;
 
-@ContextConfiguration("/spring-test.xml")
+@ContextConfiguration("/context.xml")
 public class StepBusiness {
 
 	PageObjectClass page;
