@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>io.openbdt</groupId>
 	<artifactId>archetype-web</artifactId>
-	<version>2.0</version>
+	<version>2.1</version>
 	<packaging>maven-archetype</packaging>
-
 	<name>archetype-web</name>
 	<url>http://openbdt.io/</url>
-	
+	<properties>
+		<openbdt.version>2.1</openbdt.version>
+	</properties>
 	<build>
 		<extensions>
 			<extension>
@@ -19,7 +20,6 @@
 				<version>2.4</version>
 			</extension>
 		</extensions>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -41,7 +41,7 @@
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>io.openbdt</groupId>
 								<artifactId>openbdt</artifactId>
-								<version>2.0</version>
+								<version>${openbdt.version}</version>
 								<packaging>jar</packaging>
 								<pomFile>${basedir}/lib/openbdt/pom.xml</pomFile>
 							</configuration>
@@ -54,11 +54,11 @@
 							<id>install-core</id>
 							<phase>install</phase>
 							<configuration>
-								<file>${basedir}/lib/openbdt-core/openbdt.core-2.0.jar</file>
+								<file>${basedir}/lib/openbdt-core/openbdt.core-${openbdt.version}.jar</file>
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>io.openbdt</groupId>
 								<artifactId>openbdt.core</artifactId>
-								<version>2.0</version>
+								<version>${openbdt.version}</version>
 								<packaging>jar</packaging>
 								<pomFile>${basedir}/lib/openbdt-core/pom.xml</pomFile>
 							</configuration>
@@ -71,11 +71,11 @@
 							<id>install-report</id>
 							<phase>install</phase>
 							<configuration>
-								<file>${basedir}/lib/openbdt-report/openbdt.report-2.0.jar</file>
+								<file>${basedir}/lib/openbdt-report/openbdt.report-${openbdt.version}.jar</file>
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>io.openbdt</groupId>
 								<artifactId>openbdt.report</artifactId>
-								<version>2.0</version>
+								<version>${openbdt.version}</version>
 								<packaging>jar</packaging>
 								<pomFile>${basedir}/lib/openbdt-report/pom.xml</pomFile>
 							</configuration>
@@ -88,11 +88,11 @@
 							<id>install-plugin-maven</id>
 							<phase>install</phase>
 							<configuration>
-								<file>${basedir}/lib/openbdt-plugin-maven/openbdt.plugin.maven-2.0.jar</file>
+								<file>${basedir}/lib/openbdt-plugin-maven/openbdt.plugin.maven-${openbdt.version}.jar</file>
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>io.openbdt</groupId>
 								<artifactId>openbdt.plugin.maven</artifactId>
-								<version>2.0</version>
+								<version>${openbdt.version}</version>
 								<packaging>jar</packaging>
 								<pomFile>${basedir}/lib/openbdt-plugin-maven/pom.xml</pomFile>
 							</configuration>
@@ -109,7 +109,7 @@
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>io.openbdt</groupId>
 								<artifactId>openbdt.web</artifactId>
-								<version>2.0</version>
+								<version>${openbdt.version}</version>
 								<packaging>jar</packaging>
 								<pomFile>${basedir}/lib/openbdt.web/pom.xml</pomFile>
 							</configuration>
@@ -122,11 +122,11 @@
 							<id>install-adapter-selenium</id>
 							<phase>install</phase>
 							<configuration>
-								<file>${basedir}/lib/openbdt-adapter-selenium/openbdt.adapter.selenium-2.0.jar</file>
+								<file>${basedir}/lib/openbdt-adapter-selenium/openbdt.adapter.selenium-${openbdt.version}.jar</file>
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>io.openbdt</groupId>
 								<artifactId>openbdt.adapter.selenium</artifactId>
-								<version>2.0</version>
+								<version>${openbdt.version}</version>
 								<packaging>jar</packaging>
 								<pomFile>${basedir}/lib/openbdt-adapter-selenium/pom.xml</pomFile>
 							</configuration>
@@ -139,11 +139,11 @@
 							<id>install-openbdt.web-starter</id>
 							<phase>install</phase>
 							<configuration>
-								<file>${basedir}/lib/openbdt.web-starter/openbdt.web-starter-2.0.jar</file>
+								<file>${basedir}/lib/openbdt.web-starter/openbdt.web-starter-${openbdt.version}.jar</file>
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>io.openbdt</groupId>
 								<artifactId>openbdt.web-starter</artifactId>
-								<version>2.0</version>
+								<version>${openbdt.version}</version>
 								<packaging>jar</packaging>
 								<pomFile>${basedir}/lib/openbdt.web-starter/pom.xml</pomFile>
 							</configuration>

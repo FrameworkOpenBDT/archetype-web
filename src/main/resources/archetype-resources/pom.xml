@@ -10,30 +10,19 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<serenity.version>1.9.1</serenity.version>
-		<serenity.maven.version>1.9.0-rc.3</serenity.maven.version>
-		<selenium.version>3.9.1</selenium.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<openbdt.version>2.0</openbdt.version>
 		<spring.version>4.2.2.RELEASE</spring.version>
 	</properties>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.1.RELEASE</version>
+		<groupId>io.openbdt</groupId>
+		<artifactId>openbdt.web</artifactId>
+		<version>2.1</version>
 	</parent>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>io.openbdt</groupId>
 			<artifactId>openbdt.web-starter</artifactId>
-			<version>${openbdt.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -56,13 +45,6 @@
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.20.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>io.openbdt</groupId>
-						<artifactId>openbdt.core</artifactId>
-						<version>${openbdt.version}</version>
-					</dependency>
-				</dependencies>
 				<configuration>
 					<includes>
 						<include>${packageInPathFormat}/runner/*.java</include>
@@ -70,14 +52,6 @@
 					<parallel>methods</parallel>
 					<threadCount>2</threadCount>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>net.serenity-bdd.maven.plugins</groupId>
@@ -108,16 +82,6 @@
 			<plugin>
 				<groupId>io.openbdt</groupId>
 				<artifactId>openbdt.plugin.maven</artifactId>
-				<version>2.0</version>
-				<executions>
-					<execution>
-						<id>openbdt-report</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>format-report</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

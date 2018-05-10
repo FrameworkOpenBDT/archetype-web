@@ -1,36 +1,27 @@
 <?xml version="1.0"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>io.openbdt</groupId>
-		<artifactId>openbdt.web</artifactId>
-		<version>2.0</version>
-	</parent>
-	<artifactId>openbdt.web-starter</artifactId>
-	<name>openbdt.web-starter</name>
-	<url>http://openbdt.io/</url>
-	<properties>
-		<selenium.version>3.9.1</selenium.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<serenity.version>1.9.1</serenity.version>
-		<spring.version>4.2.2.RELEASE</spring.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>io.openbdt</groupId>
-			<artifactId>openbdt.adapter.selenium</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>1.7.0</version>
-		</dependency>
-	</dependencies>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.openbdt</groupId>
+    <artifactId>openbdt.web</artifactId>
+    <version>2.1</version>
+  </parent>
+  <artifactId>openbdt.web-starter</artifactId>
+  <name>openbdt.web-starter</name>
+  <url>http://openbdt.io/</url>
+  <dependencies>
+    <dependency>
+      <groupId>io.openbdt</groupId>
+      <artifactId>openbdt.adapter.selenium</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+    </dependency>
+  </dependencies>
 </project>

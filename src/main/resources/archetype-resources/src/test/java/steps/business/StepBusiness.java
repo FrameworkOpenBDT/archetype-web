@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 
 import io.openbdt.element.WebBrowserScreenElement;
@@ -15,8 +16,10 @@ import jxl.common.Logger;
 import net.serenitybdd.core.annotations.findby.By;
 
 @ContextConfiguration("/context.xml")
+@Component
 public class StepBusiness {
 
+	@Autowired
 	PageObjectClass page;
 	
 	Logger LOG = Logger.getLogger(StepBusiness.class);
@@ -65,7 +68,6 @@ public class StepBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void preencherFirstName(String firstName) {
@@ -90,33 +92,26 @@ public class StepBusiness {
 
 	public void selecionarDiaDateOfBirth(String dayDateOfBirth) {
 		new Select(viewElement.findElement(By.name("days"))).selectByVisibleText("6  ");
-		// viewElement.selectByVisibleText(page.getSelectDayOfBirth(), "6 ");
 	}
 
 	public void selecionarMesDateOfBirth(String monthDateOfBirth) {
 		new Select(viewElement.findElement(By.name("months"))).selectByVisibleText("November ");
-//		viewElement.selectByVisibleText(page.getSelectMonthOfBirth(), "November ");
 	}
 
 	public void selecionarAnoDateOfBirth(String yearDateOfBirth) {
 		new Select(viewElement.findElement(By.name("years"))).selectByVisibleText("1996  ");
-//		viewElement.selectByVisibleText(page.getSelectYearOfBirth(), "1996 ");
 	}
 
 	public void preencherCheckBoxNewsletter(String newsletter) {
 		if (newsletter.equalsIgnoreCase("sim")) {
 			viewElement.findElement(By.xpath("//div[@id='uniform-newsletter']/span/input[@id='newsletter']")).click();
-			;
 		}
-		// viewElement.click(page.getCheckBoxNewsletter());
 	}
 
 	public void preencherCheckBoxOffersPartners(String partners) {
 		if (partners.equalsIgnoreCase("sim")) {
 			viewElement.findElement(By.xpath("//div[@id='uniform-optin']/span/input[@id='optin']")).click();
-			;
 		}
-		// viewElement.click(page.getCheckBoxPartners());
 	}
 
 	public void preencherAddress(String address) {
@@ -129,7 +124,6 @@ public class StepBusiness {
 
 	public void selecionarState(String state) {
 		new Select(viewElement.findElement(By.name("id_state"))).selectByVisibleText(state);
-//		viewElement.selectByVisibleText(page.getSelectState(), state);
 	}
 
 	public void preencherZipCode(String zipCode) {
@@ -138,7 +132,6 @@ public class StepBusiness {
 
 	public void selecionarCountry(String country) {
 		new Select(viewElement.findElement(By.name("id_country"))).selectByVisibleText(country);
-//		viewElement.selectByVisibleText(page.getSelectCountry(), country);
 	}
 
 	public void preencherAdditionalInformation(String information) {
@@ -162,7 +155,6 @@ public class StepBusiness {
 		viewElement.waitForElementIsPresent(20, page.getTituloMyAccount());
 		LOG.info(">> " + page.getTituloMyAccount().getText());
 		Assert.assertEquals("MY ACCOUNT", page.getTituloMyAccount().getText());
-		
 	}
 
 	public void validarTelaMyAccount(String arg1) {
@@ -170,5 +162,4 @@ public class StepBusiness {
 		LOG.info(">> " + page.getTituloMyAccount().getText());
 		Assert.assertEquals(arg1, page.getTituloMyAccount().getText());
 	}
-
 }

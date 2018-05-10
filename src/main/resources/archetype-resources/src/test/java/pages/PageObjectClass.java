@@ -6,8 +6,11 @@ package ${package}.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
+
 import net.serenitybdd.core.pages.PageObject;
 
+@Component
 public class PageObjectClass extends PageObject{
 
 	@FindBy(xpath = "//div[@class='header_user_info']/a[contains(text(),'Sign in')]")
@@ -205,7 +208,4 @@ public class PageObjectClass extends PageObject{
 	public WebElement getBotaoRegister() {
 		return botaoRegister;
 	}
-	
-	
-	
 }
